@@ -2,9 +2,15 @@ namespace SpriteKind {
     export const plant = SpriteKind.create()
     export const sun = SpriteKind.create()
 }
-function SpawnInWaves (enemies: any[]) {
-	
-}
+scene.onOverlapTile(SpriteKind.Enemy, assets.tile`myTile`, function (sprite, location) {
+    game.gameOver(false)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(50)
+    sprites.destroy(otherSprite)
+})
+let Sun: Sprite = null
+let Zombies: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -79,37 +85,91 @@ let wallnut = sprites.create(img`
     . . . . f 4 4 4 4 4 4 4 f . . . 
     . . . . . f f f f f f f . . . . 
     `, SpriteKind.plant)
-peashooter.setPosition(63, 107)
+peashooter.setPosition(60, 107)
 sunflower.setPosition(78, 107)
 wallnut.setPosition(96, 107)
-info.setScore(0)
-pause(15000)
-let Sun = sprites.create(img`
+info.setScore(100)
+let SunLocations = tiles.getTilesByType(assets.tile`myTile8`)
+mySprite.setStayInScreen(true)
+let ZombieSpawns = tiles.getTilesByType(assets.tile`myTile10`)
+let ZombieImages = [img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . f f f . . . . . . 
+    . . . . . . f 7 7 2 f . . . . . 
+    . . . . . f 7 7 7 2 2 f . . . . 
+    . . . . . f 7 f 7 f 7 f . . . . 
+    . . . . . f 7 7 7 7 7 f . . . . 
+    . . . . . . f 7 7 7 f . . . . . 
+    . . . . . . . f f f . . . . . . 
     . . . . . . . . f . . . . . . . 
-    . . . f f . . f 5 f . . f f . . 
-    . . . f 5 f . f 5 f . f 5 f . . 
-    . . . . f 5 f f f f f 5 f . . . 
-    . . . . . f f 5 5 5 f f . . . . 
-    . . . f f f 5 5 5 5 5 f f f . . 
-    . . f 5 5 f 5 5 5 5 5 f 5 5 f . 
-    . . . f f f 5 5 5 5 5 f f f . . 
-    . . . . . f f 5 5 5 f f . . . . 
-    . . . . f 5 f f f f f 5 f . . . 
-    . . . f 5 f . f 5 f . f 5 f . . 
-    . . . f f . . f 5 f . . f f . . 
+    . . . . . f f f f f f f . . . . 
+    . . . . . f . . f . . f . . . . 
+    . . . . . f . . f . . f . . . . 
     . . . . . . . . f . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Food)
-Sun.setVelocity(0, 3)
-game.onUpdateInterval(16000, function () {
-    while (info.score() < 0) {
-        Sun.setPosition(randint(35, 120), 0)
-    }
+    . . . . . . . f f f . . . . . . 
+    . . . . . . f . . . f . . . . . 
+    . . . . . . f . . . f . . . . . 
+    `, img`
+    . . . . . . . . 4 . . . . . . . 
+    . . . . . . . 1 1 1 . . . . . . 
+    . . . . . . 4 4 4 4 4 . . . . . 
+    . . . . . 1 1 1 1 1 1 1 . . . . 
+    . . . . 4 4 4 4 4 4 4 4 4 . . . 
+    . . . . . f 7 f 7 f 2 f . . . . 
+    . . . . . f 7 7 7 7 7 f . . . . 
+    . . . . . . f 7 7 7 f . . . . . 
+    . . . . . . . f f f . . . . . . 
+    . . . . . f f f f f f f . . . . 
+    . . . . . f . . f . . f . . . . 
+    . . . . . f . . f . . f . . . . 
+    . . . . . . . . f . . . . . . . 
+    . . . . . . . f f f . . . . . . 
+    . . . . . . f . . . f . . . . . 
+    . . . . . . f . . . f . . . . . 
+    `, img`
+    . . . . . b b b b b b b . . . . 
+    . . . . . b b b b b b b . . . . 
+    . . . . . b b b b b b b . . . . 
+    . . . . . c b b b b b c . . . . 
+    . . . . . f 7 f 7 f 7 f . . . . 
+    . . . . . f 7 7 7 7 7 f . . . . 
+    . . . . . . f 7 7 7 f . . . . . 
+    . . . . . . . f f f . . . . . . 
+    . . . . . . . . f . . . . . . . 
+    . . . . . f f f f f f f . . . . 
+    . . . . . f . . f . . f . . . . 
+    . . . . . f . . f . . f . . . . 
+    . . . . . . . . f . . . . . . . 
+    . . . . . . . f f f . . . . . . 
+    . . . . . . f . . . f . . . . . 
+    . . . . . . f . . . f . . . . . 
+    `]
+game.onUpdateInterval(5000, function () {
+    Zombies = sprites.create(ZombieImages._pickRandom(), SpriteKind.Enemy)
+    tiles.placeOnRandomTile(Zombies, assets.tile`myTile10`)
+})
+game.onUpdateInterval(15000, function () {
+    Sun = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . f . . . . . . . 
+        . . . f f . . f 5 f . . f f . . 
+        . . . f 5 f . f 5 f . f 5 f . . 
+        . . . . f 5 f f f f f 5 f . . . 
+        . . . . . f f 5 5 5 f f . . . . 
+        . . . f f f 5 5 5 5 5 f f f . . 
+        . . f 5 5 f 5 5 5 5 5 f 5 5 f . 
+        . . . f f f 5 5 5 5 5 f f f . . 
+        . . . . . f f 5 5 5 f f . . . . 
+        . . . . f 5 f f f f f 5 f . . . 
+        . . . f 5 f . f 5 f . f 5 f . . 
+        . . . f f . . f 5 f . . f f . . 
+        . . . . . . . . f . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Food)
+    tiles.placeOnRandomTile(Sun, assets.tile`myTile8`)
 })
 forever(function () {
-    if (mySprite.overlapsWith(Sun)) {
-        info.changeScoreBy(50)
-    }
+    Sun.setVelocity(0, 3)
+    Zombies.setVelocity(-3, 0)
 })

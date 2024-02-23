@@ -58,16 +58,37 @@
         "tilemapTile": true,
         "displayName": "myTile7"
     },
+    "tile10": {
+        "data": "hwQQABAAAACZmZmZmZmZmZmZkZmZmZmZmRkREZmZmZmZGRERmZmZmZkZERGRmZmZmRERERGZmZmZEREREZmZmRkRERGRmZmZmRERERGZmZmZEREREZmZmZkZERERkZmZmZmZERGRmZmZmZmZEZGZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmQ==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile8"
+    },
+    "tile11": {
+        "data": "hwQQABAAAACZmZmZmZmZmZkZEZmZmZmZmRkREZmZmZmZERERkZmZmZkRERGRmZmZmREREZGZmZmZERERkZmZmZkZERGRmZmZmRERERGZmZmZEREREZmZmZkZERERmZmZmZkZERGZmZmZmRkRmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmQ==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile9"
+    },
+    "tile12": {
+        "data": "hwQQABAAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile10"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",
-        "data": "MTAwYjAwMDcwMDAzMDEwMjAyMDIwMjAyMDIwMjAyMDIwMzAxMDIwMjAyMDIwMjAyMDIwMjAyMDMwMTAyMDIwMjAyMDIwMjAyMDIwMjAzMDEwMjAyMDIwMjAyMDIwMjAyMDIwMzAxMDIwMjAyMDIwMjAyMDIwMjAyMDMwMTAyMDIwMjAyMDIwMjAyMDIwMjA0MDQwNDA0MDQwNDA0MDQwNDA0MDQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=",
+        "data": "MTAwYzAwMDgwMDA1MDUwNDA0MDQwNDA0MDQwNDA0MDQwNDA2MDEwMjAyMDIwMjAyMDIwMjAyMDIwNzA2MDEwMjAyMDIwMjAyMDIwMjAyMDIwNzA2MDEwMjAyMDIwMjAyMDIwMjAyMDIwNzA2MDEwMjAyMDIwMjAyMDIwMjAyMDIwNzA2MDEwMjAyMDIwMjAyMDIwMjAyMDIwNzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
         "tileset": [
             "myTiles.transparency16",
             "myTiles.tile1",
             "sprites.dungeon.darkGroundCenter",
-            "sprites.castle.tileGrass2",
-            "sprites.castle.tileDarkGrass3"
+            "sprites.castle.tileDarkGrass3",
+            "myTiles.tile10",
+            "myTiles.tile11",
+            "sprites.castle.tileGrass1",
+            "myTiles.tile12"
         ],
         "displayName": "level1"
     },
