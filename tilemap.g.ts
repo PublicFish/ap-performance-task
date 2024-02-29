@@ -29,17 +29,6 @@ namespace myTiles {
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
-            case "level1":
-            case "level1":return tiles.createTilemap(hex`0c000800050504040404040404040404060102020202020202020207060102020202020202020207060102020202020202020207060102020202020202020207060102020202020202020207030303030303030303030303030303030303030303030303`, img`
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-. . . . . . . . . . . . 
-`, [myTiles.transparency16,myTiles.tile1,sprites.dungeon.darkGroundCenter,sprites.castle.tileDarkGrass3,myTiles.tile10,myTiles.tile11,sprites.castle.tileGrass1,myTiles.tile12], TileScale.Sixteen);
             case "level2":
             case "level2":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
 . . . . . . . . . . . . . . . . 
@@ -59,6 +48,17 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, [myTiles.transparency16], TileScale.Sixteen);
+            case "level1":
+            case "level1":return tiles.createTilemap(hex`0c000800050504040404040404040404060102020202020202020207060102020202020202020207060102020202020202020207060102020202020202020207060102020202020202020207030303030303030303030303030303030303030303030303`, img`
+2 2 . . . . . . . . . . 
+2 . . . . . . . . . . . 
+2 . . . . . . . . . . . 
+2 . . . . . . . . . . . 
+2 . . . . . . . . . . . 
+2 . . . . . . . . . . . 
+2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 
+`, [myTiles.transparency16,myTiles.tile1,sprites.dungeon.darkGroundCenter,sprites.castle.tileDarkGrass3,myTiles.tile10,myTiles.tile11,sprites.castle.tileGrass1,myTiles.tile12], TileScale.Sixteen);
         }
         return null;
     })
